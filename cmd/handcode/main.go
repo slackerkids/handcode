@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/widget"
+)
 
 const logo = `
 $$\   $$\                           $$\  $$$$$$\                  $$\           
@@ -14,5 +18,16 @@ $$ |  $$ |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |\$$$$$$  |\$$$$$$$ |\$$$$$$$\
                                                                                 `
 
 func main() {
-	fmt.Println(logo)
+	var wid widget.CodeBlockSegment
+
+	wid.Text = logo
+	canvas := wid.Visual()
+
+	a := app.New()
+	w := a.NewWindow("Handcode")
+
+	w.SetContent(canvas)
+	w.Resize(fyne.NewSize(1000, 500))
+
+	w.ShowAndRun()
 }
