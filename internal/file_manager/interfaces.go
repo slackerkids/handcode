@@ -1,16 +1,14 @@
 package filemanager
 
 import (
-	"context"
 	"io"
 )
 
 type FileManager interface {
-	Open(ctx context.Context, path string) (*File, error)
-	OpenFolder(ctx context.Context, root string) (*Project, error)
-	Save(File) error
-	SaveAs(File) error
-	SaveAll([]File) error
+	Open(path string) (*File, error)
+	OpenFolder(root string) (*Project, error)
+	Save(file string, buffer io.Reader) error
+	SaveAll(files []File) error
 }
 
 type Directory interface {
